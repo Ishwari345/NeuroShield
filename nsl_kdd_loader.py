@@ -77,7 +77,7 @@ class NSLKDDLoader:
             print(f"[Loader] Loaded from {self.csv_path}: {len(self.df_raw)} rows")
         except FileNotFoundError:
             self.df_raw = pd.read_csv(
-                self.txt_path, names=COLUMNS
+                self.txt_path, sep="\t", names=COLUMNS, skiprows=1, engine="python"
             ).drop(columns=["difficulty"], errors="ignore")
             print(f"[Loader] Loaded from {self.txt_path}: {len(self.df_raw)} rows")
 
